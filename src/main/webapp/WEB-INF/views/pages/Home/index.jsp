@@ -6,8 +6,6 @@
 <head>
 </head>
 <body>
-
-<h3>Olá, [NOME DO USUARIO LOGADO]!</h3>
-
+    <h3>Olá, ${sessionScope.membro.nome}</h3>
 </body>
 </html>
