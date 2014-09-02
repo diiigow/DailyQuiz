@@ -1,4 +1,7 @@
 package br.com.sidlar.dailyquiz.domain;
+
+
+import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -6,9 +9,9 @@ import javax.persistence.TypedQuery;
 
 /**
  * @author Rodrigo
- * @since 29/08/2014
+ * @since  29/08/2014
  */
-
+@Repository
 public class MembroRepository {
 
     @PersistenceContext
