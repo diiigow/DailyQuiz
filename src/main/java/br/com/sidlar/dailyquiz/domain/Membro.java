@@ -2,18 +2,32 @@ package br.com.sidlar.dailyquiz.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
 
 /**
  * @author Rodrigo
- * @since  29/08/2014
+ * @since 29/08/2014
  */
 @Entity
 public class Membro {
     @Id
     int id;
     String nome;
-    String userName;
+    String email;
     String senha;
+    LocalDate dataNascimento;
+
+    public Membro() {
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
     public String getNome() {
         return nome;
@@ -23,12 +37,12 @@ public class Membro {
         this.nome = nome;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String userName) {
+        this.email = userName;
     }
 
     public String getSenha() {
@@ -37,5 +51,9 @@ public class Membro {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Years getIdade() {
+        return Years.yearsBetween(dataNascimento, LocalDate.now());
     }
 }

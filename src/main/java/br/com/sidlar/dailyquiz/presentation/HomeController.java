@@ -13,7 +13,7 @@ public class HomeController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
 
-    public String login(@RequestParam("username") String username, @RequestParam("senha") String senha, HttpServletRequest req) {
+    public String login(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpServletRequest req) {
         req.getSession().setAttribute("membro", new Membro());
         return "/Home/index";
     }

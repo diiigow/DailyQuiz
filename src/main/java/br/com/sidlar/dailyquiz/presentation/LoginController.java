@@ -28,7 +28,7 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String loga(@RequestParam("username") String userName, @RequestParam("senha") String senha, HttpServletRequest request) {
+    public String loga(@RequestParam("email") String userName, @RequestParam("senha") String senha, HttpServletRequest request) {
         Membro membro = membroRepository.buscaMembro(userName, senha);
         request.getSession().setAttribute("membro", membro);
         return "/Home/index";

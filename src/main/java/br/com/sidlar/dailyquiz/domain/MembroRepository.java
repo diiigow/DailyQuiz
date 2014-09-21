@@ -19,7 +19,7 @@ public class MembroRepository {
     public Membro buscaMembro(String userName, String senha) {
         try {
 
-            TypedQuery<Membro> query = em.createQuery("select m from Membro as m where m.userName = :userName and m.senha = :senha", Membro.class);
+            TypedQuery<Membro> query = em.createQuery("select m from Membro as m where m.email = :userName and m.senha = :senha", Membro.class);
             query.setParameter("userName", userName);
             query.setParameter("senha", senha);
 
