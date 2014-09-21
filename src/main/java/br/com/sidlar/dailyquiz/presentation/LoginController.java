@@ -1,4 +1,5 @@
 package br.com.sidlar.dailyquiz.presentation;
+
 import br.com.sidlar.dailyquiz.domain.Membro;
 import br.com.sidlar.dailyquiz.domain.MembroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String loga(@RequestParam("username") String userName, @RequestParam("senha") String senha, HttpServletRequest request) {
-
         Membro membro = membroRepository.buscaMembro(userName, senha);
         request.getSession().setAttribute("membro", membro);
         return "/Home/index";

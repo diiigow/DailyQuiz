@@ -1,6 +1,5 @@
 package br.com.sidlar.dailyquiz.domain;
 
-
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
