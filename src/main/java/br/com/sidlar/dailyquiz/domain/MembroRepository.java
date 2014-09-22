@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.sql.SQLException;
 
 /**
  * @author Rodrigo
@@ -32,4 +33,8 @@ public class MembroRepository {
         }
     }
 
+    public void cadastraMembro(Membro membro) {
+        em.persist(membro);
     }
+
+}

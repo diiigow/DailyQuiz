@@ -18,6 +18,13 @@ public class Membro {
     String senha;
     LocalDate dataNascimento;
 
+    public Membro(String nome, String email, String senha, LocalDate dataNascimento) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+    }
+
     public Membro() {
     }
 

@@ -32,7 +32,7 @@ public class LoginController {
 
         Membro membro = membroRepository.buscaMembro(email, senha);
         request.getSession().setAttribute("membro", membro);
-        return "/Home/index";
+        return "redirect:/Home/index";
 
     }
 
