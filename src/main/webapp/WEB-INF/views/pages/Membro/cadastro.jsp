@@ -5,7 +5,7 @@
     <title>Cadastro de Membro</title>
 </head>
 <body>
-    <form>
+    <form method="post">
         <label>Nome:</label>
         <input type="text"/>
         <label>Email:</label>

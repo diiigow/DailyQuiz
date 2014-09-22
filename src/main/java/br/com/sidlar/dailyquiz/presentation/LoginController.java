@@ -28,10 +28,12 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String loga(@RequestParam("email") String userName, @RequestParam("senha") String senha, HttpServletRequest request) {
-        Membro membro = membroRepository.buscaMembro(userName, senha);
+    public String loga(@RequestParam("email") String email, @RequestParam("senha") String senha, HttpServletRequest request) {
+
+        Membro membro = membroRepository.buscaMembro(email, senha);
         request.getSession().setAttribute("membro", membro);
         return "/Home/index";
+
     }
 
 }

@@ -9,11 +9,13 @@
 
 <form method="post">
     <h2>Login</h2>
+    <label>Email</label>
     <input type="text" name="email" placeholder="email" required autofocus>
+    <label>Senha</label>
     <input type="password" name="senha" placeholder="senha" required>
     <button type="submit">Entrar</button>
-
-    <a href="/WEB-INF/views/pages/Membro/cadastro.jsp">Não é membro? clique aqui</a>
+    <br/>
+    <a href="/cadastro">Não é membro? clique aqui</a>
 </form>
 
 </body>

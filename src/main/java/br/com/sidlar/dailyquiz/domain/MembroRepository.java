@@ -16,11 +16,11 @@ public class MembroRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Membro buscaMembro(String userName, String senha) {
+    public Membro buscaMembro(String email, String senha) {
         try {
 
-            TypedQuery<Membro> query = em.createQuery("select m from Membro as m where m.email = :userName and m.senha = :senha", Membro.class);
-            query.setParameter("userName", userName);
+            TypedQuery<Membro> query = em.createQuery("select m from Membro as m where m.email = :email and m.senha = :senha", Membro.class);
+            query.setParameter("email", email);
             query.setParameter("senha", senha);
 
             Membro membro = query.getSingleResult();
