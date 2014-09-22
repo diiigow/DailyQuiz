@@ -7,14 +7,17 @@
 <body>
     <form method="post">
         <label>Nome:</label>
-        <input type="text"/>
+        <input type="text" name="nome"/>
+        <br/>
         <label>Email:</label>
-        <input type="text"/>
+        <input type="text" name="email"/>
+        <br/>
         <label>Senha</label>
-        <input type="password"/>
+        <input type="password" name="senha"/>
+        <br/>
         <label>Data de Nascimento:</label>
-        <input type="date"/>
-
+        <input type="date" name="dataNascimento"/>
+        <br/>
         <input type="submit" value="Cadastrar">
     </form>
 </body>
