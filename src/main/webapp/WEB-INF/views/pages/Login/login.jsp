@@ -7,15 +7,14 @@
 </head>
 <body>
 
-<form method="post">
+<form method="post" action="<c:url value="/Login"/>">
     <h2>Login</h2>
-    <label>Email</label>
-    <input type="text" name="email" placeholder="email" required autofocus>
-    <label>Senha</label>
+    <c:if test="${not empty erro}">
+        <h3>${erro}</h3>
+    </c:if>
+    <input type="text" name="username" placeholder="username" required autofocus>
     <input type="password" name="senha" placeholder="senha" required>
     <button type="submit">Entrar</button>
-    <br/>
-    <a href="/cadastro">Não é membro? clique aqui</a>
 </form>
 
 </body>
