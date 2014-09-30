@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
@@ -14,6 +15,11 @@ public class LoginController {
 
     @Autowired
     Autenticador autenticador;
+
+    @RequestMapping(method = GET)
+    public String loing() {
+        return "/Login/login";
+    }
 
     @RequestMapping(method = POST)
     public String login(@RequestParam("username") String username, @RequestParam("senha") String senha , ModelMap model) {
@@ -26,4 +32,5 @@ public class LoginController {
         }
         return "redirect:/";
     }
+
 }

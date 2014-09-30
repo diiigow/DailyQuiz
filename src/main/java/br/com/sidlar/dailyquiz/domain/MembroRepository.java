@@ -25,7 +25,7 @@ public class MembroRepository {
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {
-            throw new Exception("Nenhum membro foi encontrado com o username " + username);
+            throw new RuntimeException("Nenhum membro foi encontrado com o username " + username);
         }
     }
 }
