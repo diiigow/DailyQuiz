@@ -18,8 +18,7 @@ public class HomeController {
     @RequestMapping(method = RequestMethod.GET)
     public String goHome(HttpSession session) {
 
-        AutenticadorUtils autenticadorUtils = new AutenticadorUtils();
-        if (!autenticadorUtils.membroEstaAutenticado(session)) {
+        if (!AutenticadorUtils.membroEstaAutenticado(session)) {
             return "redirect:/Login";
         }
         return "/Home/index";
