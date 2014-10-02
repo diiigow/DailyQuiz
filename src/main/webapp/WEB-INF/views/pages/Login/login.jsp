@@ -12,7 +12,7 @@
     <c:if test="${not empty erro}">
         <h3>${erro}</h3>
     </c:if>
-    <input type="text" name="username" placeholder="username" required autofocus>
+    <input type="email" name="email" placeholder="email" required autofocus>
     <input type="password" name="senha" placeholder="senha" required>
     <button type="submit">Entrar</button>
 </form>

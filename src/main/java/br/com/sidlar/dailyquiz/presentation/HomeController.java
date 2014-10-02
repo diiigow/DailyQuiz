@@ -12,12 +12,10 @@ public class HomeController {
 
     /**
      * Verifica se o membro esta autenticado.
-     * Caso esteja autenticado o usuario vai para a página home, se não volta para a tela de login
-     * @author Rodrigo
+     * <p>Caso esteja autenticado o usuario vai para a página home, se não volta para a tela de login
      */
     @RequestMapping(method = RequestMethod.GET)
     public String goHome(HttpSession session) {
-
         if (!AutenticadorUtils.membroEstaAutenticado(session)) {
             return "redirect:/Login";
         }

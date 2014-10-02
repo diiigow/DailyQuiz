@@ -16,16 +16,16 @@ public class MembroRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Membro buscaMembroPorUsername(String username) throws Exception {
+    public Membro buscaMembroPoremail(String email) throws Exception {
         TypedQuery<Membro> query = em.createQuery(  "select m " +
                                                     "from   Membro m " +
-                                                    "where  m.username = :username", Membro.class)
-                                                    .setParameter("username", username);
+                                                    "where  m.email = :username", Membro.class)
+                                                    .setParameter("username", email);
 
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {
-            throw new RuntimeException("Nenhum membro foi encontrado com o username " + username);
+            throw new RuntimeException("Nenhum membro foi encontrado com o email " + email);
         }
     }
 }

@@ -8,9 +8,7 @@ import javax.servlet.http.HttpSession;
 public class AutenticadorUtils {
 
     public static boolean membroEstaAutenticado(HttpSession session) {
-        if (session.getAttribute("membroAutenticado") == null) {
-            return false;
-        }
-        return true;
+        return session.getAttribute("membroAutenticado") != null;
     }
+
 }

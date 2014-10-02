@@ -1,5 +1,8 @@
 package br.com.sidlar.dailyquiz.domain;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 import javax.persistence.*;
 
 
@@ -11,9 +14,9 @@ public class Membro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private String username;
+    private String email;
     private String senha;
-
+    private LocalDate dataNascimento;
 
     public String getSenha() {
         return senha;
@@ -22,4 +25,10 @@ public class Membro {
     public String getNome() {
         return nome;
     }
+
+    public Years getIdade() {
+        return Years.yearsBetween(dataNascimento, LocalDate.now());
+    }
+
 }
+

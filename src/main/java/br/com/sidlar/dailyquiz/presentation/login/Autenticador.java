@@ -2,6 +2,7 @@ package br.com.sidlar.dailyquiz.presentation.login;
 
 import br.com.sidlar.dailyquiz.domain.Membro;
 import br.com.sidlar.dailyquiz.domain.MembroRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +12,10 @@ import javax.servlet.http.HttpSession;
  * Serviço de autenticação do membro.
  * <p>Passos para fazer a autenticação.
  * <ul>
- *      <li>Verifica se existe o membro com o username informado</li>
- *      <li>Verifica se a senha do membro esta correta</li>
- *      <li>Armazena o membro na sessão</li>
- *  </ul>
+ *      <li>Verifica se existe o membro com o username informado
+ *      <li>Verifica se a senha do membro esta correta
+ *      <li>Armazena o membro na sessão
+ * </ul>
  * @author Rodrigo
  */
 @Component
@@ -26,9 +27,8 @@ class Autenticador {
     @Autowired
     private HttpSession session;
 
-    void autentica(String username, String senha) throws Exception {
-
-        Membro membro = verificaSeExisteMembroComUsername(username);
+    void autentica(String email, String senha) throws Exception {
+        Membro membro = verificaSeExisteMembroComEmail(email);
         verificaSenhaMembro(senha, membro);
         armazenaMembroNaSessao(membro);
     }
@@ -38,12 +38,12 @@ class Autenticador {
     }
 
     private void verificaSenhaMembro(String senha, Membro membro) throws Exception {
-        if (!membro.getSenha().equals(senha)) {
+        if (!membro.getSenha().equals(DigestUtils.md5Hex(senha))) {
             throw new IllegalArgumentException("Senha inválida!");
         }
     }
 
-    private Membro verificaSeExisteMembroComUsername(String username) throws Exception {
-        return membroRepository.buscaMembroPorUsername(username);
+    private Membro verificaSeExisteMembroComEmail(String email) throws Exception {
+        return membroRepository.buscaMembroPoremail(email);
     }
 }

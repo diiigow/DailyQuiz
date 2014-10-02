@@ -14,7 +14,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class LoginController {
 
     @Autowired
-    Autenticador autenticador;
+    private Autenticador autenticador;
 
     @RequestMapping(method = GET)
     public String loing() {
@@ -22,12 +22,12 @@ public class LoginController {
     }
 
     @RequestMapping(method = POST)
-    public String login(@RequestParam("username") String username, @RequestParam("senha") String senha , ModelMap model) {
-
+    public String login(@RequestParam("email") String email, @RequestParam("senha") String senha, ModelMap model) {
         try {
-            autenticador.autentica(username, senha);
-        } catch (Exception e) {
-            model.addAttribute("erro" , e.getMessage());
+            autenticador.autentica(email, senha);
+        }
+        catch (Exception e) {
+            model.addAttribute("erro", e.getMessage());
             return "/Login/login";
         }
         return "redirect:/";
