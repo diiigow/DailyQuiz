@@ -1,4 +1,4 @@
-package br.com.sidlar.dailyquiz.presentation;
+package br.com.sidlar.dailyquiz.infraestrutura.autenticacao;
 
 import javax.servlet.http.HttpSession;
 

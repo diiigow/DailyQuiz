@@ -19,8 +19,8 @@ public class MembroRepository {
     public Membro buscaMembroPoremail(String email) throws Exception {
         TypedQuery<Membro> query = em.createQuery(  "select m " +
                                                     "from   Membro m " +
-                                                    "where  m.email = :username", Membro.class)
-                                                    .setParameter("username", email);
+                                                    "where  m.email = :email", Membro.class)
+                                                    .setParameter("email", email);
 
         try {
             return query.getSingleResult();

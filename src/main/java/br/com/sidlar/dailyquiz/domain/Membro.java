@@ -1,5 +1,6 @@
 package br.com.sidlar.dailyquiz.domain;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
@@ -16,6 +17,7 @@ public class Membro {
     private String nome;
     private String email;
     private String senha;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate dataNascimento;
 
     public String getSenha() {

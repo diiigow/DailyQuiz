@@ -1,5 +1,6 @@
 package br.com.sidlar.dailyquiz.presentation.login;
 
+import br.com.sidlar.dailyquiz.infraestrutura.autenticacao.Autenticador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

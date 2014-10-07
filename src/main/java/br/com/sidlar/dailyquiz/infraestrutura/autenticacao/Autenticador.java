@@ -1,4 +1,4 @@
-package br.com.sidlar.dailyquiz.presentation.login;
+package br.com.sidlar.dailyquiz.infraestrutura.autenticacao;
 
 import br.com.sidlar.dailyquiz.domain.Membro;
 import br.com.sidlar.dailyquiz.domain.MembroRepository;
@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
  * Serviço de autenticação do membro.
  * <p>Passos para fazer a autenticação.
  * <ul>
- *      <li>Verifica se existe o membro com o username informado
+ *      <li>Verifica se existe o membro com o email informado
  *      <li>Verifica se a senha do membro esta correta
  *      <li>Armazena o membro na sessão
  * </ul>
  * @author Rodrigo
  */
 @Component
-class Autenticador {
+public class Autenticador {
 
     @Autowired
     private MembroRepository membroRepository;
@@ -27,7 +27,7 @@ class Autenticador {
     @Autowired
     private HttpSession session;
 
-    void autentica(String email, String senha) throws Exception {
+    public void autentica(String email, String senha) throws Exception {
         Membro membro = verificaSeExisteMembroComEmail(email);
         verificaSenhaMembro(senha, membro);
         armazenaMembroNaSessao(membro);

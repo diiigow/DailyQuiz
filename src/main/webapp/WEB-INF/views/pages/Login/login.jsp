@@ -7,15 +7,49 @@
 </head>
 <body>
 
-<form method="post" action="<c:url value="/Login"/>">
-    <h2>Login</h2>
-    <c:if test="${not empty erro}">
-        <h3>${erro}</h3>
-    </c:if>
-    <input type="email" name="email" placeholder="email" required autofocus>
-    <input type="password" name="senha" placeholder="senha" required>
-    <button type="submit">Entrar</button>
-</form>
+<div class="row bs-docs-section">
+    <div class="col-lg-4">
+        <form col="12" class="form-horizontal" method="post" action="<c:url value="/Login"/>">
 
+
+
+
+            <fieldset>
+                <legend>Login</legend>
+
+                <c:if test="${not empty erro}">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Atenção!</h4>
+                        <p>${erro}.</p>
+                    </div>
+                </c:if>
+
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" name="email" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" name="senha" id="inputPassword"
+                               placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
 </body>
 </html>

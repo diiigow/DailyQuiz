@@ -1,5 +1,6 @@
-package br.com.sidlar.dailyquiz.presentation;
+package br.com.sidlar.dailyquiz.presentation.home;
 
+import br.com.sidlar.dailyquiz.infraestrutura.autenticacao.AutenticadorUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
