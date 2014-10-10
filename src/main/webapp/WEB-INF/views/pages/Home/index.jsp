@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Olá, ${sessionScope.membroAutenticado.nome}.</h1>
+<h1>Olá, ${sessionScope.contextoAutenticado.membro.nome}.</h1>
 
 </body>
 </html>

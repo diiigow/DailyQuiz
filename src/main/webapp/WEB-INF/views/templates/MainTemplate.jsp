@@ -16,7 +16,7 @@
 
     <script src="<c:url value="/resources/libs/jquery/2_1_1/jquery-2.1.1.min.js" />"></script>
 
-    <link rel="stylesheet" href="<c:url value="/resources/libs/bootstrap/3_2_2/css/bootstrap-slate.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/libs/bootstrap/3_2_2/css/bootstrap-cosmo.min.css"/>">
     <script src="<c:url value="/resources/libs/bootstrap/3_2_2/js/bootstrap.min.js" />"></script>
 
     <style>

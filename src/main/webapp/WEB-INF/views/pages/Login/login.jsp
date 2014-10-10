@@ -7,48 +7,48 @@
 </head>
 <body>
 
-<div class="row bs-docs-section">
-    <div class="col-lg-4">
-        <form col="12" class="form-horizontal" method="post" action="<c:url value="/Login"/>">
-
-
-
-
+<div class="row bs-docs-section col-lg-offset-2 col-lg-6">
+    <div class="col-lg-12">
+        <form class="form-horizontal" method="post" action="<c:url value="/Login"/>">
             <fieldset>
                 <legend>Login</legend>
-
-                <c:if test="${not empty erro}">
-                    <div class="alert alert-dismissable alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <h4>Atenção!</h4>
-                        <p>${erro}.</p>
-                    </div>
-                </c:if>
-
                 <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" name="email" id="inputEmail" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-
+                    <label for="inputPassword" class="col-lg-2 control-label">Senha</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" name="senha" id="inputPassword"
-                               placeholder="Password">
+                        <input type="password" class="form-control" name="senha" id="inputPassword" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-10">
+                        <a href="<c:url value="/Cadastro"/>" class="btn btn-link" style="padding-left: 0px">Não é membro? clique aqui!</a>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Entra no Sistema</button>
                     </div>
                 </div>
             </fieldset>
         </form>
+
+        <c:if test="${not empty erro}">
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>Atenção!</h4>
+
+                <p>${erro}.</p>
+            </div>
+        </c:if>
+
     </div>
 </div>
 </body>

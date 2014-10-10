@@ -11,6 +11,7 @@
      -->
     <!-- Domain Layer -->
     <context:component-scan base-package="br.com.sidlar.dailyquiz.domain" />
+    <context:component-scan base-package="br.com.sidlar.dailyquiz.infraestrutura" />
 
     <!--
      **** *************************************************************************************************************

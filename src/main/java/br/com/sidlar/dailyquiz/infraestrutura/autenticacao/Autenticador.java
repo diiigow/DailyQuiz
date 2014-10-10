@@ -2,7 +2,9 @@ package br.com.sidlar.dailyquiz.infraestrutura.autenticacao;
 
 import br.com.sidlar.dailyquiz.domain.Membro;
 import br.com.sidlar.dailyquiz.domain.MembroRepository;
+import br.com.sidlar.dailyquiz.infraestrutura.validador.ValidadorEmailUtils;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * <ul>
  *      <li>Verifica se existe o membro com o email informado
  *      <li>Verifica se a senha do membro esta correta
- *      <li>Armazena o membro na sessão
+ *      <li>Armazena o membro e o instante do último login na sessão
  * </ul>
  * @author Rodrigo
  */
@@ -30,11 +32,12 @@ public class Autenticador {
     public void autentica(String email, String senha) throws Exception {
         Membro membro = verificaSeExisteMembroComEmail(email);
         verificaSenhaMembro(senha, membro);
-        armazenaMembroNaSessao(membro);
+        armazenaContextoAutenticacaoNaSessao(membro , DateTime.now());
     }
 
-    private void armazenaMembroNaSessao(Membro membro) {
-        session.setAttribute("membroAutenticado", membro);
+    private void armazenaContextoAutenticacaoNaSessao(Membro membro, DateTime instanteUltimoLogin) {
+        ContextoAutenticacao contextoAutenticacao = new ContextoAutenticacao(membro, instanteUltimoLogin);
+        session.setAttribute("contextoAutenticado", contextoAutenticacao);
     }
 
     private void verificaSenhaMembro(String senha, Membro membro) throws Exception {
@@ -44,6 +47,12 @@ public class Autenticador {
     }
 
     private Membro verificaSeExisteMembroComEmail(String email) throws Exception {
+
+        if (!ValidadorEmailUtils.ehEmailValido(email) ) {
+            throw new IllegalArgumentException("E-mail inválido!");
+        }
+
         return membroRepository.buscaMembroPoremail(email);
     }
+
 }

@@ -5,7 +5,7 @@
         <pattern>/*</pattern>
     </decorator>
 
-    <decorator name="login" page="LoginTemplate.jsp">
-        <pattern>/login*</pattern>
-    </decorator>
+    <!--<decorator name="login" page="LoginTemplate.jsp">-->
+        <!--<pattern>/login*</pattern>-->
+    <!--</decorator>-->
 </decorators>
