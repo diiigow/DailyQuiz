@@ -41,7 +41,7 @@ public class Membro {
         return dataNascimento;
     }
 
-    @DateTimeFormat(pattern = "yyyyMMdd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }

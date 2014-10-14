@@ -5,6 +5,7 @@ import br.com.sidlar.dailyquiz.infraestrutura.validador.ValidadorEmailUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * O membro é formado por Nome, email, senha e data de Nascimento
@@ -24,12 +25,12 @@ public class ContextoCadastramentoMembro {
     @Autowired
     public Autenticador autenticador;
 
+    @Transactional(readOnly = false)
     public void validaCadastro(Membro membro) throws Exception{
         validaNomeMembro(membro);
         validaEmailMembro(membro);
         validaSenhaMembro(membro);
         membroRepository.insereMembro(membro);
-        autenticador.autentica(membro.getEmail(), membro.getSenha());
     }
 
     private void validaNomeMembro(Membro membro) throws Exception {
