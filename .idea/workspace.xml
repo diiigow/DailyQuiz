@@ -41,8 +41,8 @@
       <file leaf-file-name="CadastraMembroController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/br/com/sidlar/dailyquiz/presentation/membro/CadastraMembroController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46978557" vertical-offset="31" max-vertical-offset="697">
-              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.56920075" vertical-offset="31" max-vertical-offset="697">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -1247,7 +1247,7 @@
       <workItem from="1411334758642" duration="546000" />
       <workItem from="1411335315545" duration="149000" />
       <workItem from="1413240313560" duration="41000" />
-      <workItem from="1413240381173" duration="8532000" />
+      <workItem from="1413240381173" duration="8576000" />
     </task>
     <task id="LOCAL-00001" summary="cadastro de membro">
       <created>1413254941708</created>
@@ -1255,11 +1255,17 @@
       <option name="project" value="LOCAL" />
       <updated>1413254941708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="cadastro de membro">
+      <created>1413255215441</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1413255215441</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9268000" />
+    <option name="totallyTimeSpent" value="9312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1533,8 +1539,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/br/com/sidlar/dailyquiz/presentation/membro/CadastraMembroController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46978557" vertical-offset="31" max-vertical-offset="697">
-          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.56920075" vertical-offset="31" max-vertical-offset="697">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
           <folding />
         </state>
       </provider>
