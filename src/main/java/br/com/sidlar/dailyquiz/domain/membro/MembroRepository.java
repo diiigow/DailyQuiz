@@ -1,4 +1,4 @@
-package br.com.sidlar.dailyquiz.domain;
+package br.com.sidlar.dailyquiz.domain.membro;
 
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -27,5 +27,9 @@ public class MembroRepository {
         } catch (NoResultException e) {
             throw new RuntimeException("Nenhum membro foi encontrado com o email " + email);
         }
+    }
+
+    public void insereMembro(Membro membro) {
+        em.persist(membro);
     }
 }

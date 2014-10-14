@@ -1,4 +1,4 @@
-package br.com.sidlar.dailyquiz.domain;
+package br.com.sidlar.dailyquiz.domain.membro;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
@@ -41,7 +41,7 @@ public class Membro {
         return dataNascimento;
     }
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyyMMdd")
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }

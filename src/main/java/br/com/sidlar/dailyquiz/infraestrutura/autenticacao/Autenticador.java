@@ -1,7 +1,7 @@
 package br.com.sidlar.dailyquiz.infraestrutura.autenticacao;
 
-import br.com.sidlar.dailyquiz.domain.Membro;
-import br.com.sidlar.dailyquiz.domain.MembroRepository;
+import br.com.sidlar.dailyquiz.domain.membro.Membro;
+import br.com.sidlar.dailyquiz.domain.membro.MembroRepository;
 import br.com.sidlar.dailyquiz.infraestrutura.validador.ValidadorEmailUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.joda.time.DateTime;
@@ -35,9 +35,13 @@ public class Autenticador {
         armazenaContextoAutenticacaoNaSessao(membro , DateTime.now());
     }
 
-    private void armazenaContextoAutenticacaoNaSessao(Membro membro, DateTime instanteUltimoLogin) {
-        ContextoAutenticacao contextoAutenticacao = new ContextoAutenticacao(membro, instanteUltimoLogin);
-        session.setAttribute("contextoAutenticado", contextoAutenticacao);
+    private Membro verificaSeExisteMembroComEmail(String email) throws Exception {
+
+        if (!ValidadorEmailUtils.ehEmailValido(email) ) {
+            throw new IllegalArgumentException("E-mail inválido!");
+        }
+
+        return membroRepository.buscaMembroPoremail(email);
     }
 
     private void verificaSenhaMembro(String senha, Membro membro) throws Exception {
@@ -46,13 +50,9 @@ public class Autenticador {
         }
     }
 
-    private Membro verificaSeExisteMembroComEmail(String email) throws Exception {
-
-        if (!ValidadorEmailUtils.ehEmailValido(email) ) {
-            throw new IllegalArgumentException("E-mail inválido!");
-        }
-
-        return membroRepository.buscaMembroPoremail(email);
+    private void armazenaContextoAutenticacaoNaSessao(Membro membro, DateTime instanteUltimoLogin) {
+        ContextoAutenticacao contextoAutenticacao = new ContextoAutenticacao(membro, instanteUltimoLogin);
+        session.setAttribute("contextoAutenticado", contextoAutenticacao);
     }
 
 }
