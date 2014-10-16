@@ -1,15 +1,17 @@
 package br.com.sidlar.dailyquiz.presentation.membro;
 
-import br.com.sidlar.dailyquiz.domain.membro.FormularioCadastroMembro;
-import br.com.sidlar.dailyquiz.domain.membro.Membro;
-import br.com.sidlar.dailyquiz.domain.membro.CadastraMembroFactory;
-import br.com.sidlar.dailyquiz.domain.membro.MembroRepository;
+import br.com.sidlar.dailyquiz.domain.membro.*;
+import br.com.sidlar.dailyquiz.infraestrutura.autenticacao.Autenticador;
+import br.com.sidlar.dailyquiz.infraestrutura.autenticacao.ContextoAutenticacao;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Rodrigo
@@ -20,23 +22,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CadastraMembroController {
 
     @Autowired
-    public CadastraMembroFactory factory;
-
-    @Autowired
-    public MembroRepository repository;
+    public MembroService membroService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String CadastraMembro (ModelMap modelMap) {
+    public String CadastraMembro(ModelMap modelMap) {
         Membro formulario = new Membro();
         modelMap.addAttribute("formulario", formulario);
         return "/Membro/cadastro";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String CadastraMembro(@ModelAttribute("formulario") FormularioCadastroMembro formulario, ModelMap model) {
+    public String CadastraMembro(@ModelAttribute("formulario") FormularioCadastroMembro formulario, ModelMap model, HttpSession session) {
         try {
-            Membro membro = factory.fabricaMembro(formulario);
-            repository.insereMembro(membro);
+            Membro membro = membroService.criaMembro(formulario);
+            membroService.armazenaNovoMembroNaSession(session, membro, DateTime.now());
         }
         catch (Exception e) {
             model.addAttribute("erro", e.getMessage());
@@ -44,5 +43,4 @@ public class CadastraMembroController {
         }
         return "redirect:/";
     }
-
 }

@@ -35,4 +35,17 @@ public class MembroRepository {
     public void insereMembro(Membro membro) {
         em.persist(membro);
     }
+
+    public void verificaSeEmailJaEstaCadastrado(String email) throws Exception {
+        TypedQuery<Membro> query = em.createQuery(  "select m " +
+                                                    "from   Membro m " +
+                                                    "where  m.email = :email", Membro.class)
+                                                    .setParameter("email", email);
+
+
+        if (!query.getResultList().isEmpty()) {
+            throw new RuntimeException("E-mail já cadastrado!");
+        }
+    }
+
 }

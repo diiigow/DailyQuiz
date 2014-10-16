@@ -74,5 +74,9 @@ public class Membro extends FormularioCadastroMembro {
         return Years.yearsBetween(dataNascimento, LocalDate.now());
     }
 
+    public boolean isAniversario() {
+        return getDataNascimento().dayOfMonth().equals(LocalDate.now().dayOfMonth());
+    }
+
 }
 

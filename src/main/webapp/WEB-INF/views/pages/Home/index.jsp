@@ -9,5 +9,10 @@
 
 <h1>Olá, ${sessionScope.contextoAutenticado.membro.nome}.</h1>
 
+    <c:if test="${sessionScope.contextoAutenticado.membro.aniversario}">
+        <h3>${sessionScope.contextoAutenticado.membro.nome}, parabéns pelos
+            seus ${sessionScope.contextoAutenticado.membro.idade.getYears()} anos de vida.</h3>
+    </c:if>
+
 </body>
 </html>

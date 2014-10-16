@@ -44,7 +44,6 @@
             <div class="alert alert-dismissable alert-warning">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <h4>Atenção!</h4>
-
                 <p>${erro}.</p>
             </div>
         </c:if>

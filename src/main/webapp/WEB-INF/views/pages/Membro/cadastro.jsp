@@ -17,7 +17,7 @@
                 <label for="inputNome" class="col-lg-3 control-label">Nome</label>
 
                 <div class="col-lg-9">
-                    <form:input path="nome" type="text" class="form-control" id="inputNome" placeholder="Nome" />
+                    <form:input path="nome" type="text" class="form-control" id="inputNome" placeholder="Nome"/>
                 </div>
             </div>
 
@@ -25,7 +25,8 @@
                 <label for="inputEmail" class="col-lg-3 control-label">Email</label>
 
                 <div class="col-lg-9">
-                    <form:input path="email" type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" />
+                    <form:input path="email" type="email" class="form-control" name="email" id="inputEmail"
+                                placeholder="Email"/>
                 </div>
             </div>
 
@@ -33,7 +34,8 @@
                 <label for="inputPassword" class="col-lg-3 control-label">Password</label>
 
                 <div class="col-lg-9">
-                    <form:password path="senha" class="form-control" name="senha" id="inputPassword" placeholder="Password" />
+                    <form:password path="senha" class="form-control" name="senha" id="inputPassword"
+                                   placeholder="Password"/>
                 </div>
             </div>
 
@@ -41,7 +43,8 @@
                 <label for="inputDataNascimento" class="col-lg-3 control-label">Nascimento</label>
 
                 <div class="col-lg-9">
-                    <form:input path="dataNascimento" type="date" class="form-control" name="dataNascimento" id="inputDataNascimento" />
+                    <form:input path="dataNascimento" type="date" class="form-control" name="dataNascimento"
+                                id="inputDataNascimento"/>
                 </div>
             </div>
 
@@ -52,17 +55,17 @@
                 </div>
             </div>
         </fieldset>
-        </form:form>
+    </form:form>
 
     <c:if test="${not empty erro}">
         <div class="alert alert-dismissable alert-warning">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <h4>Atenção!</h4>
-            <p>${erro}.</p>
+
+            <p>${erro}!</p>
         </div>
     </c:if>
 
 </div>
-
 </body>
 </html>
