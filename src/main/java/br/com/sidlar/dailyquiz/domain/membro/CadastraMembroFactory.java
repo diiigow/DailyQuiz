@@ -17,44 +17,46 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Rodrigo
  */
 @Component
-public class ContextoCadastramentoMembro {
-
-    @Autowired
-    public MembroRepository membroRepository;
+public class CadastraMembroFactory {
 
     @Autowired
     public Autenticador autenticador;
 
     @Transactional(readOnly = false)
-    public void validaCadastro(Membro membro) throws Exception{
-        validaNomeMembro(membro);
-        validaEmailMembro(membro);
-        validaSenhaMembro(membro);
-        membroRepository.insereMembro(membro);
+    public Membro fabricaMembro(FormularioCadastroMembro formulario) throws Exception {
+        validaFormularioParaFabricacaoMembro(formulario);
+        Membro membro = new Membro(formulario.getNome(),formulario.getEmail(),formulario.getSenha(),formulario.getDataNascimento());
+        return membro;
     }
 
-    private void validaNomeMembro(Membro membro) throws Exception {
+    private void validaFormularioParaFabricacaoMembro(FormularioCadastroMembro formulario) throws Exception {
+        validaNomeMembro(formulario);
+        validaEmailMembro(formulario);
+        validaSenhaMembro(formulario);
+    }
 
-        if (membro.getNome().equals("")) {
+    private void validaNomeMembro(FormularioCadastroMembro formulario) throws Exception {
+
+        if (formulario.getNome().equals("")) {
             throw new IllegalArgumentException("O campo nome é obrigatório!");
         }
 
-        if (membro.getNome().length() > 50) {
+        if (formulario.getNome().length() > 50) {
             throw new IllegalArgumentException("O nome do deve conter no máximo 50 caracteres!");
         }
     }
 
-    private void validaEmailMembro(Membro membro) throws Exception {
-        if (!ValidadorEmailUtils.ehEmailValido(membro.getEmail())) {
+    private void validaEmailMembro(FormularioCadastroMembro formulario) throws Exception {
+        if (!ValidadorEmailUtils.ehEmailValido(formulario.getEmail())) {
             throw new IllegalArgumentException("E-mail inválido");
         }
     }
 
-    private void validaSenhaMembro(Membro membro) throws Exception {
-        if (membro.getSenha().length() < 6 || membro.getSenha().length() > 10) {
+    private void validaSenhaMembro(FormularioCadastroMembro formulario) throws Exception {
+        if (formulario.getSenha().length() < 6 || formulario.getSenha().length() > 10) {
             throw new IllegalArgumentException("A senha deve ter no mínimo 6 e no máximo 10 caracteres");
         }
-        membro.setSenha(DigestUtils.md5Hex(membro.getSenha()));
+        formulario.setSenha(DigestUtils.md5Hex(formulario.getSenha()));
     }
 
 }

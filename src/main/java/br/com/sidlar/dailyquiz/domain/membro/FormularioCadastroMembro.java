@@ -1,6 +1,7 @@
-package br.com.sidlar.dailyquiz.presentation.membro;
+package br.com.sidlar.dailyquiz.domain.membro;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author Rodrigo
@@ -10,6 +11,7 @@ public class FormularioCadastroMembro {
     private String nome;
     private String email;
     private String senha;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataNascimento;
 
     public FormularioCadastroMembro() {
@@ -38,6 +40,7 @@ public class FormularioCadastroMembro {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 
     public LocalDate getDataNascimento() {
         return dataNascimento;

@@ -3,14 +3,13 @@ package br.com.sidlar.dailyquiz.domain.membro;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
 
 @Table(name = "membro")
 @Entity
-public class Membro {
+public class Membro extends FormularioCadastroMembro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,38 +20,54 @@ public class Membro {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate dataNascimento;
 
+    public Membro() {
+    }
+
+    public Membro(String nome, String email, String senha, LocalDate dataNascimento) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    @Override
     public String getEmail() {
         return email;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
 
+    @Override
+    public String getSenha() {
+        return senha;
+    }
+
+    @Override
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
+    @Override
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Override
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    public String getSenha() {
-        return senha;
-
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public Years getIdade() {

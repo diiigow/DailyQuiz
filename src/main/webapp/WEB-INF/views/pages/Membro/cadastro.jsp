@@ -9,7 +9,7 @@
 <body>
 <div class="row bs-docs-section col-lg-offset-2 col-lg-8 col-lg-pull-2">
 
-    <form:form modelAttribute="membro" method="post" class="form-horizontal">
+    <form:form modelAttribute="formulario" method="post" class="form-horizontal">
         <fieldset>
             <legend>Cadastro de Membro</legend>
 
