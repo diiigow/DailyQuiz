@@ -29,42 +29,46 @@ public class MembroFactory {
     @Transactional(readOnly = false)
     public Membro fabricaMembro(FormularioCadastroMembro formulario) throws Exception {
         validaFormularioParaFabricacaoMembro(formulario);
-        return new Membro(formulario.getNome(),formulario.getEmail(),formulario.getSenha(),formulario.getDataNascimento());
+        return new Membro(formulario.getNome(), formulario.getEmail(), DigestUtils.md5Hex(formulario.getSenha()), formulario.getDataNascimento());
     }
 
     private void validaFormularioParaFabricacaoMembro(FormularioCadastroMembro formulario) throws Exception {
-        validaNomeMembro(formulario);
-        validaEmailMembro(formulario);
-        validaSenhaMembro(formulario);
-        validaDataNascimento(formulario);
+        validaNomeMembro(formulario.getNome());
+        validaEmailMembro(formulario.getEmail());
+        validaSenhaMembro(formulario.getSenha());
+        validaDataNascimento(formulario.getDataNascimento());
     }
 
-    private void validaNomeMembro(FormularioCadastroMembro formulario) throws Exception {
-        if (formulario.getNome().equals("")) {
+    private void validaNomeMembro(String nome) throws Exception {
+        if (nome.equals("")) {
             throw new IllegalArgumentException("O campo nome é obrigatório!");
         }
-        if (formulario.getNome().length() > 50) {
+        if (nome.length() > 50) {
             throw new IllegalArgumentException("O nome do deve conter no máximo 50 caracteres!");
         }
     }
 
-    private void validaEmailMembro(FormularioCadastroMembro formulario) throws Exception {
-        if (!ValidadorEmailUtils.ehEmailValido(formulario.getEmail())) {
+    private void validaEmailMembro(String email) throws Exception {
+        if (!ValidadorEmailUtils.ehEmailValido(email)) {
             throw new IllegalArgumentException("E-mail inválido");
         }
-        repository.verificaSeEmailJaEstaCadastrado(formulario.getEmail());
+        repository.verificaSeEmailJaEstaCadastrado(email);
     }
 
-    private void validaSenhaMembro(FormularioCadastroMembro formulario) throws Exception {
-        if (formulario.getSenha().length() < 6 || formulario.getSenha().length() > 10) {
+    private void validaSenhaMembro(String senha) throws Exception {
+        if (senha.length() < 6 || senha.length() > 10) {
             throw new IllegalArgumentException("A senha deve ter no mínimo 6 e no máximo 10 caracteres");
         }
-        formulario.setSenha(DigestUtils.md5Hex(formulario.getSenha()));
     }
 
-    private void validaDataNascimento(FormularioCadastroMembro formulario) throws Exception {
-        if (formulario.getDataNascimento().compareTo(LocalDate.now()) >= 0) {
-            throw new RuntimeException("A data de nascimento tem que ser menor que a data de hoje!");
+    private void validaDataNascimento(LocalDate dataNascimento) throws Exception {
+
+        if (dataNascimento == null) {
+            throw new IllegalArgumentException("Favor informar a data de nascimento!");
+        }
+
+        if (dataNascimento.compareTo(LocalDate.now()) >= 0) {
+            throw new IllegalArgumentException("A data de nascimento tem que ser menor que a data de hoje!");
         }
     }
 

@@ -1,8 +1,10 @@
 package br.com.sidlar.dailyquiz.domain.membro;
 
 import org.hibernate.annotations.Type;
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
+import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 
@@ -76,6 +78,12 @@ public class Membro extends FormularioCadastroMembro {
 
     public boolean isAniversario() {
         return getDataNascimento().dayOfMonth().equals(LocalDate.now().dayOfMonth());
+    }
+
+    public Days getQuantidadeDiasFaltanteParaProximoAniversario() {
+        LocalDate hoje = LocalDate.now();
+        LocalDate proximoAniversario = new LocalDate(hoje.getYear(), getDataNascimento().getMonthOfYear(), getDataNascimento().getDayOfMonth());
+        return Days.daysBetween(hoje, proximoAniversario);
     }
 
 }
