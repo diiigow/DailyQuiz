@@ -1,6 +1,7 @@
 package br.com.sidlar.dailyquiz.domain.membro;
 
 import br.com.sidlar.dailyquiz.infraestrutura.autenticacao.Autenticador;
+import br.com.sidlar.dailyquiz.infraestrutura.gerador.GeraHashSenha;
 import br.com.sidlar.dailyquiz.infraestrutura.validador.ValidadorEmailUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.joda.time.LocalDate;
@@ -29,7 +30,7 @@ public class MembroFactory {
     @Transactional(readOnly = false)
     public Membro fabricaMembro(FormularioCadastroMembro formulario) throws Exception {
         validaFormularioParaFabricacaoMembro(formulario);
-        return new Membro(formulario.getNome(), formulario.getEmail(), DigestUtils.md5Hex(formulario.getSenha()), formulario.getDataNascimento());
+        return new Membro(formulario.getNome(), formulario.getEmail(), formulario.getSenha(), formulario.getDataNascimento());
     }
 
     private void validaFormularioParaFabricacaoMembro(FormularioCadastroMembro formulario) throws Exception {
@@ -59,6 +60,8 @@ public class MembroFactory {
         if (senha.length() < 6 || senha.length() > 10) {
             throw new IllegalArgumentException("A senha deve ter no mínimo 6 e no máximo 10 caracteres");
         }
+
+        GeraHashSenha.defineHashApartirSenha(senha);
     }
 
     private void validaDataNascimento(LocalDate dataNascimento) throws Exception {
