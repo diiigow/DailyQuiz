@@ -2,16 +2,32 @@ package br.com.sidlar.dailyquiz.domain.membro.resposta;
 
 import br.com.sidlar.dailyquiz.domain.membro.Membro;
 import br.com.sidlar.dailyquiz.domain.membro.Questionario;
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Rodrigo
  */
 public class RespostaQuestionario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Membro membro = new Membro();
-    private Questionario questionario = new Questionario();
-    private LocalDate dataCriacao;
+
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate data;
+
+    @OneToMany
+    private Membro membro;
+
+    @OneToMany
+    private Questionario questionario;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RespostaQuestao> respostaQuestoes;
+
 
 }

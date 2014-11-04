@@ -1,28 +1,35 @@
 package br.com.sidlar.dailyquiz.domain.membro;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Rodrigo
  */
 @Entity
-@Table(name =  "questionario")
+@Table(name = "questionario")
 public class Questionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String nome;
 
-    public Questionario() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "idMembro")
+    private Membro membroCriador;
 
-    public String getNome() {
-        return nome;
-    }
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate inicioDisponibilidade;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate fimDisponibilidade;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Questao> questoes;
 }
+

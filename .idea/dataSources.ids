@@ -33,6 +33,7 @@
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="descricao" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id,descricao"/>
+      <exported-key name="respostaQuestaoAlternativa" table="respostaquestao" schema="" catalog="dailyquiz" columns="idAlternativa"/>
     </table>
     <table name="membro" schema="" catalog="dailyquiz" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -41,32 +42,50 @@
       <column name="senha" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="dataNascimento" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="questionario_membro" table="questionario" schema="" catalog="dailyquiz" columns="idMembro"/>
+      <exported-key name="respostaquestionario_membro" table="respostaquestionario" schema="" catalog="dailyquiz" columns="idMembro"/>
       <index name="email_UNIQUE" unique="true" columns="email"/>
     </table>
     <table name="questao" schema="" catalog="dailyquiz" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="nome" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enunciado" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="idAlternativaCorreta" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="respostaQuestaoQuestao" table="respostaquestao" schema="" catalog="dailyquiz" columns="idQuestao"/>
     </table>
     <table name="questionario" schema="" catalog="dailyquiz" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="nome" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idMembro" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="questionario_membro" columns="idMembro" ref-table="membro" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="respostaQuestaoQuestionario" table="respostaquestao" schema="" catalog="dailyquiz" columns="idQuestionario"/>
+      <exported-key name="respostaquestionario_questionario" table="respostaquestionario" schema="" catalog="dailyquiz" columns="idQuestionario"/>
+      <index name="questionario_fk_idx" unique="false" columns="idMembro"/>
     </table>
     <table name="respostaquestao" schema="" catalog="dailyquiz" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="idQuestionario" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="idQuestao" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="idAlternativa" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idQuestionario" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idQuestao" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idAlternativa" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="respostaQuestaoQuestionario" columns="idQuestionario" ref-table="questionario" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="respostaQuestaoQuestao" columns="idQuestao" ref-table="questao" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="respostaQuestaoAlternativa" columns="idAlternativa" ref-table="alternativa" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="alternativa_fk_idx" unique="false" columns="idAlternativa"/>
+      <index name="questao_fk_idx" unique="false" columns="idQuestao"/>
+      <index name="questionario_fk_idx" unique="false" columns="idQuestionario"/>
     </table>
     <table name="respostaquestionario" schema="" catalog="dailyquiz" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="data" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="idMembro" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="idQuestionario" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="data" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="idMembro" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idQuestionario" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="respostaquestionario_membro" columns="idMembro" ref-table="membro" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="respostaquestionario_questionario" columns="idQuestionario" ref-table="questionario" ref-schema="" ref-catalog="dailyquiz" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="membro_fk_idx" unique="false" columns="idMembro"/>
+      <index name="questionario_fk_idx" unique="false" columns="idQuestionario"/>
     </table>
     <table name="CHARACTER_SETS" schema="" catalog="information_schema" type="SYSTEM VIEW">
       <column name="CHARACTER_SET_NAME" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>

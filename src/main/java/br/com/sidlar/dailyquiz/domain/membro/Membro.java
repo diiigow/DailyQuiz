@@ -4,7 +4,6 @@ import org.hibernate.annotations.Type;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
-import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 

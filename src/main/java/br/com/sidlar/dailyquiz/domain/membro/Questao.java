@@ -13,30 +13,14 @@ public class Questao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nome;
-    private int AlternativaCorreta;
+
+    private String enunciado;
+
+    @OneToOne
+    private Alternativa alternativaCorreta;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alternativa> alternativas;
 
-    public Questao() {
-    }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getAlternativaCorreta() {
-        return AlternativaCorreta;
-    }
-
-    public void setAlternativaCorreta(int numeroAlternativaCorreta) {
-        this.AlternativaCorreta = numeroAlternativaCorreta;
-    }
-
-    public void adicionaAlternativa(Alternativa alternativa) {
-        alternativas.add(alternativa);
-    }
 }
