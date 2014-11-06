@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * @author Rodrigo
  */
+@Entity
+@Table(name = "respostaquestionario")
 public class RespostaQuestionario {
 
     @Id
@@ -20,14 +22,13 @@ public class RespostaQuestionario {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate data;
 
-    @OneToMany
+    @OneToOne
     private Membro membro;
 
-    @OneToMany
+    @OneToOne
     private Questionario questionario;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RespostaQuestao> respostaQuestoes;
-
 
 }

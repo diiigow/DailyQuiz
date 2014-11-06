@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class RespostaQuestao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
     @ManyToOne

@@ -11,7 +11,7 @@ import java.util.List;
 public class Questao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
 
     private String enunciado;
@@ -21,6 +21,5 @@ public class Questao {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alternativa> alternativas;
-
 
 }

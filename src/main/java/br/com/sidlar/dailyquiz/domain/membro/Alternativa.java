@@ -12,6 +12,7 @@ public class Alternativa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String descricao;
 
 }
