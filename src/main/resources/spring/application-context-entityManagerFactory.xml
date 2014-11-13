@@ -10,6 +10,7 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
                   p:database="MYSQL" p:showSql="${log.jpa.showSql}" />
         </property>
+        <property name="packagesToScan" value="br.com.sidlar.dailyquiz"/>
     </bean>
 
 </beans>

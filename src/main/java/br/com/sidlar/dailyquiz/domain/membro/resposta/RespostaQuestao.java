@@ -1,7 +1,7 @@
 package br.com.sidlar.dailyquiz.domain.membro.resposta;
 
-import br.com.sidlar.dailyquiz.domain.membro.Alternativa;
-import br.com.sidlar.dailyquiz.domain.membro.Questao;
+import br.com.sidlar.dailyquiz.domain.questionario.Alternativa;
+import br.com.sidlar.dailyquiz.domain.questionario.Questao;
 
 import javax.persistence.*;
 

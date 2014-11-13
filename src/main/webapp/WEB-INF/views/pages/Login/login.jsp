@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="row bs-docs-section col-lg-offset-2 col-lg-6">
+<div class="row bs-docs-section col-lg-offset-2 col-lg-6 well bs-component">
     <div class="col-lg-12">
         <form class="form-horizontal" method="post" action="<c:url value="/Login"/>">
             <fieldset>

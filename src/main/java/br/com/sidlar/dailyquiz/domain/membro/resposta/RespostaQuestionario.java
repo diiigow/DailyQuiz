@@ -1,7 +1,7 @@
 package br.com.sidlar.dailyquiz.domain.membro.resposta;
 
 import br.com.sidlar.dailyquiz.domain.membro.Membro;
-import br.com.sidlar.dailyquiz.domain.membro.Questionario;
+import br.com.sidlar.dailyquiz.domain.questionario.Questionario;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
@@ -23,9 +23,11 @@ public class RespostaQuestionario {
     private LocalDate data;
 
     @OneToOne
+    @JoinColumn(name = "idMembro")
     private Membro membro;
 
     @OneToOne
+    @JoinColumn(name = "idQuestionario")
     private Questionario questionario;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

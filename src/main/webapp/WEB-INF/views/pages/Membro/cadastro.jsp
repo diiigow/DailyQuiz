@@ -7,7 +7,7 @@
     <title>Cadastro de Membro</title>
 </head>
 <body>
-<div class="row bs-docs-section col-lg-offset-2 col-lg-8 col-lg-pull-2">
+<div class="row bs-docs-section col-lg-offset-2 col-lg-8 col-lg-pull-2 well bs-component">
 
     <form:form modelAttribute="formulario" method="post" class="form-horizontal">
         <fieldset>

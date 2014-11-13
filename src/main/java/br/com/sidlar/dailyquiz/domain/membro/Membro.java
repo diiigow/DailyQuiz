@@ -31,6 +31,10 @@ public class Membro extends FormularioCadastroMembro {
         this.dataNascimento = dataNascimento;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String getNome() {
         return nome;

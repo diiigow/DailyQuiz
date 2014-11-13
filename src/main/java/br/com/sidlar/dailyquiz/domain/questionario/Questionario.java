@@ -1,5 +1,6 @@
-package br.com.sidlar.dailyquiz.domain.membro;
+package br.com.sidlar.dailyquiz.domain.questionario;
 
+import br.com.sidlar.dailyquiz.domain.membro.Membro;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 

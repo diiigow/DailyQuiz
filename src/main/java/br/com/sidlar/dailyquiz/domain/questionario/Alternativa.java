@@ -1,4 +1,4 @@
-package br.com.sidlar.dailyquiz.domain.membro;
+package br.com.sidlar.dailyquiz.domain.questionario;
 
 import javax.persistence.*;
 

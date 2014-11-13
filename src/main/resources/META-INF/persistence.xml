@@ -21,6 +21,13 @@
             <property name="jadira.usertype.autoRegisterUserTypes" value="true" />
             <property name="jadira.usertype.databaseZone" value="UTC" />
             <property name="jadira.usertype.javaZone" value="jvm" />
+
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.password" value="rootroot"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost/dailyquiz"/>
+            <property name="hibernate.connection.username" value="root"/>
+
         </properties>
     </persistence-unit>
 </persistence>
